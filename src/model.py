@@ -9,7 +9,7 @@ device = 'cuda'
 
 class DIP_model(nn.Module):
     def __init__(self):
-        super(Hourglass, self).__init__()
+        super(DIP_model, self).__init__()
 
         self.leaky_relu = nn.LeakyReLU()
         
