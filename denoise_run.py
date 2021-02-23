@@ -9,7 +9,11 @@ import imageio
 from src.model import DIP_model
 from src.masks import pixel_noise_mask
 
-device = 'cuda'
+if torch.cuda.is_available():
+    device = 'cuda'
+else:
+    device = 'cpu'
+
 
 lr = 1e-2 # learning rate
 denoise_model = DIP_model()
@@ -20,7 +24,7 @@ optimizer = optim.Adam(denoise_model.parameters(), lr=lr)
 images = []
 losses = []
 to_tensor = tv.transforms.ToTensor()
-img = Image.open('lenna_ori.png')
+img = Image.open('images/lenna_ori.png')
 input_img  = to_tensor(img).unsqueeze(0)
 
 # masked image and mask
@@ -28,8 +32,8 @@ corrupt_img, noise_mask = pixel_noise_mask(input_img, 0.8)
 noise_mask = noise_mask.to(device)
 corrupt_img = corrupt_img.to(device)
 #output placeholder
-output_img = torch.Tensor(np.mgrid[:512, :512]).unsqueeze(0) / 512
-output_img=output_img.to(device)
+denoise_img = torch.Tensor(np.mgrid[:512, :512]).unsqueeze(0) / 512
+denoise_img = denoise_img.to(device)
 
 demo_corrupt = np.array(corrupt_img[0].cpu().detach().permute(1,2,0)*255, np.uint8)
 

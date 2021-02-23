@@ -9,7 +9,10 @@ import imageio
 from src.model import DIP_model
 from src.masks import pixel_text_mask
 
-device = 'cuda'
+if torch.cuda.is_available():
+    device = 'cuda'
+else:
+    device = 'cpu'
 
 lr = 1e-2 #learning rate
 inpaint_model = DIP_model() 
@@ -22,7 +25,7 @@ losses = []
 to_tensor = tv.transforms.ToTensor()
 
 
-x = Image.open('barbara.jpg')
+x = Image.open('images/barbara.jpg')
 
 # masked image and mask
 corrupt_img, text_mask =  pixel_text_mask(np.array(x), sz=30, position=[(128, 128),(250,300)], 
@@ -34,7 +37,7 @@ corrupt_img = corrupt_img.to(device)
 text_mask = text_mask.to(device)
 #output placeholder
 output_img = torch.Tensor(np.mgrid[:512, :512]).unsqueeze(0) / 512
-output_img=output_img.to(device)
+output_img = output_img.to(device)
 
 demo_corrupt = np.array(corrupt_img[0].cpu().detach().permute(1,2,0)*255, np.uint8)
 
