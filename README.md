@@ -2,16 +2,20 @@
 ## Denoising 
 
 Filling removed pixels with appropriate pixel for denoising
+
+        Original Image                          Masked Image                        Output Image
 <div align='center'>
     <img src='images/lenna_ori.jpg' height="256">
     <img src='images/noisy-image.jpg' height="256">
     <img src='images/denoised-output.jpg' height="256">
 </div>
-Increasing training iteration may give a bit better output.
+
 
 ## Text Inpainting
 
 Removing text masks from image
+
+        Original Image                          Masked Image                        Output Image
 <div align='center'>
     <img src='images/barbara.jpg' height="256">
     <img src='images/text-corrupted-image.jpg' height="256">
@@ -22,7 +26,7 @@ Removing text masks from image
 ## Files
 
 ```
-├── src                   # Compiled files (alternatively `dist`)
+├── src                   
 |    ├── masks.py
 |    |   ├── FreeSansBold.ttf                   # font
 |    |   ├── pixel noise mask                   # removing pixels from image
