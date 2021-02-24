@@ -5,7 +5,7 @@ Filling removed pixels with appropriate pixel for denoising
 
         Original Image                          Masked Image                        Output Image
 <div align='center'>
-    <img src='images/lenna_ori.jpg' height="256">
+    <img src='images/lenna_ori.png' height="256">
     <img src='images/noisy-image.jpg' height="256">
     <img src='images/denoised-output.jpg' height="256">
 </div>
