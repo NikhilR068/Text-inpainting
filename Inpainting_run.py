@@ -6,8 +6,8 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import imageio
-from model import DIP_model
-from masks import pixel_text_mask
+from src.model import DIP_model
+from src.masks import pixel_text_mask
 
 if torch.cuda.is_available():
     device = 'cuda'
