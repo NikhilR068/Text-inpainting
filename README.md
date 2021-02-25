@@ -38,7 +38,7 @@ Removing text masks from image
 ├── notebooks
 |    |
 |    ├── Denoising and Inpainting.ipynb     # Jupyter Notebook with Pytorch Deep Image Prior
-|    └── inpaint.ipynb                      # Jupyter Notebook with tensorflow Pixel CNN for text inpainting
+|    └── text-inpaint.ipynb                      # Jupyter Notebook with tensorflow Pixel CNN for text inpainting
 |
 ├── denoise_run.py                          # Train and save output denoised image
 └── inpaint_run.py                          # Train and save output text inpainted image
